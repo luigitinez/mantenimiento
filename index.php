@@ -28,7 +28,7 @@ setlocale(LC_ALL,"es_ES");
 		        <a class="nav-link" href="#">Vehiculos</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="#">Mantenimientos</a>
+		        <a class="nav-link" href="mantenimientos.php">Mantenimientos</a>
 		      </li>
 		    </ul>
 		  </div>
