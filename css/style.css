@@ -1,0 +1,12 @@
+.bg-light {
+    background-color: #417CB7 !important;
+}
+.navbar-light .navbar-brand {
+    color: white;
+}
+nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white
+}
