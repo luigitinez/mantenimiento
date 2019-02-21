@@ -38,21 +38,28 @@ setlocale(LC_ALL,"es_ES");
 
 			<h2>Formulario de alta de clientes</h2>
 			<div class="form-cliente">
-			<form>
+			<form method="post" action="cliente-post.php">
+	
 				<div class="form-group">
-					<label for="exampleInputEmail1">Email address</label>
-					<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					<label for="exampleInputPassword1">Nombre o Razón Social:</label>
+					<input type="text" class="form-control" id="name" name="name">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Password</label>
-					<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					<label for="exampleInputPassword1">Documento identificativo (DNI/CIF/NIF):</label>
+					<input type="text" class="form-control" id="dni" name="dni">
 				</div>
-				<div class="form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1">
-					<label class="form-check-label" for="exampleCheck1">Check me out</label>
+				<div class="form-group">
+					<label for="exampleInputPassword1">Teléfono:</label>
+					<input type="tel" class="form-control" id="tel" name="tel">
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<div class="form-group">
+				    <label for="exampleFormControlSelect1">Tipo Cliente:</label>
+					<select class="form-control" name="tipo" id="tipo">
+				    	<option value="0">Particular</option>
+				    	<option value="1">Profesional</option>
+				    </select>
+				  </div>
+				<button type="submit" class="btn btn-primary float-right">Crear Cliente</button>
 			</form>
 		</div>
 	</body>

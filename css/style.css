@@ -10,3 +10,6 @@ nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-li
 .navbar-light .navbar-nav .nav-link {
     color: white
 }
+li .active{
+	background-color: blue;
+}
