@@ -1,38 +1,20 @@
 <html>
 <?php
 setlocale(LC_ALL,"es_ES");
+include_once "front.php"
 ?>
 	<head>
 		<meta charset="utf-8">
-		<title>Gestión de mantenimientos</title>
+		<title>Inicio</title>
 		<link rel="stylesheet" href="css/bootstrap.css" >
 		<link rel="stylesheet" href="css/style.css">
 
 	</head>
 
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarNav">
-		    <ul class="navbar-nav">
-		      <li class="nav-item active">
-		        <a class="nav-link" href="index.php">Inicio <span class="sr-only"></span></a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="cliente.php">Clientes</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="#">Vehiculos</a>
-		      </li>
-		      <li class="nav-item">
-		        <a class="nav-link" href="mantenimientos.php">Mantenimientos</a>
-		      </li>
-		    </ul>
-		  </div>
-		</nav>
+<?php
+		menu();
+?>
 		<div class="col-md-12">
 			<h1>Bienvenido al Gestor de mantenimientos. </h1>
 			<div class="row">		

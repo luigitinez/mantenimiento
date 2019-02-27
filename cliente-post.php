@@ -9,5 +9,6 @@ if (isset($_POST)) {
 }else{
 	die("Se fue todo a la puta!");
 }
+echo '<a href="cliente.php">Volver atras</a>';
 
 ?>
