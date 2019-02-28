@@ -46,7 +46,7 @@ include_once "MySQLDataSource.php";
 
 <?php
 	}
-
+//table bodies 
 	function tbody_clientes(){
 
 		$list = get_clientes();
@@ -92,6 +92,23 @@ include_once "MySQLDataSource.php";
 				}
 			}
         		
+		}
+
+		function tbody_vehiculos(){
+			$list = get_vehiculos();
+			if ($list->num_rows > 0 ){
+				$i=1;
+				while ($row = $list->fetch_assoc()) {
+					echo '<tr>';
+					echo '<td>'.$i.'</td>';
+					echo '<td>'.$row['matricula'].'</td>';
+					echo '<td>'.$row['bastidor'].'</td>';
+					echo '<td>'.$row['marca'].'</td>';
+					echo '<td>'.$row['modelo'].'</td>';
+					echo '<td>'.$row['name'].' - '.$row['dni'].'</td>';
+					$i++;
+				}
+			}
 		}
 
 		function sel_clientes(){

@@ -51,7 +51,25 @@ include_once "front.php"
 		</div>
 <!-- Listado de vehiculos-->
 		<div class="container">
-			
+			<table class="table">
+			  <thead class="thead-dark">
+			    <tr>
+			    	<th scope="col">Nº Linea</th>
+			    	<th scope="col">Matricula</th>
+			    	<th scope="col">Nº Bastidor</th>
+			    	<th scope="col">Marca</th>
+			    	<th scope="col">Modelo</th>
+			    	<th scope="col">Propietario</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  
+<?php
+				tbody_vehiculos();
+?>
+		
+			  </tbody>
+			</table>
 		</div>
 	</body>
 </html>

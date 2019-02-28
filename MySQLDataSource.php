@@ -47,16 +47,24 @@ function ins_vehiculo($matricula,$cliente,$marca,$modelo,$bastidor){
 
 }
 
+//getters
 function get_clientes(){
     $sql = "SELECT * FROM `cliente`";
     return select($sql);
     
 }
+
 function get_mantenimientos(){
     $sql = "SELECT * FROM `mantenimiento`";
     return select($sql);
 
 }
+
+function get_vehiculos(){
+    $sql = "SELECT `id_vehiculo`, `matricula`, `bastidor`, `modelo`, `marca`, c.name, c.dni FROM `vehiculo` as v INNER JOIN cliente as c where v.fk_cliente = c.id_cliente";
+    return select($sql);
+}
+
 function select($sql){
     $conn = conectar();
     $result = $conn->query($sql);
