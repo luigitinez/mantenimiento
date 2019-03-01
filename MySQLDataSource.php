@@ -1,7 +1,8 @@
 <?php
 
 function conectar(){
-	@$connect = new mysqli("localhost","root","root","mantenimiento");
+	$connect = new mysqli("localhost","root","","mantenimiento");
+    //$connect = new mysqli("localhost","root","root","mantenimiento");
 	if($connect->connect_errno){
        //printf("<h1><span>LA CONEXIÓN CON LA BASE DE DATOS HA FALLADO: %s\n".$connect->connect_error."</span></h1>");
        exit();
@@ -63,6 +64,10 @@ function get_mantenimientos(){
 function get_vehiculos(){
     $sql = "SELECT `id_vehiculo`, `matricula`, `bastidor`, `modelo`, `marca`, c.name, c.dni FROM `vehiculo` as v INNER JOIN cliente as c where v.fk_cliente = c.id_cliente";
     return select($sql);
+}
+
+function get_vehiculo($v){
+    $sql = "SELECT id_vehiculo, matricula, bastidor, modelo, marca, c.name, c.dni, c.telefono, c.tipo FROM vehiculo as v JOIN cliente  c ON v.fk_cliente = c.id_cliente WHERE id_vehiculo = ".$v;
 }
 
 function select($sql){

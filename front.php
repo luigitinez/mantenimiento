@@ -12,6 +12,10 @@ include_once "MySQLDataSource.php";
 		return $web;
 	}
 
+	function get_car($v){
+		$list =get_vehiculo($v);
+	}
+
 	function menu(){
 		$pages = array("index.php"=>"Inicio");
  		$activePage = geturl();
@@ -101,7 +105,7 @@ include_once "MySQLDataSource.php";
 				while ($row = $list->fetch_assoc()) {
 					echo '<tr>';
 					echo '<td>'.$i.'</td>';
-					echo '<td>'.$row['matricula'].'</td>';
+					echo '<td><a href="car.php?v='.$row['id_vehiculo'].'">'.$row['matricula'].'</a></td>';
 					echo '<td>'.$row['bastidor'].'</td>';
 					echo '<td>'.$row['marca'].'</td>';
 					echo '<td>'.$row['modelo'].'</td>';
