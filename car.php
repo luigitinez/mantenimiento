@@ -14,11 +14,9 @@
 </head>
 <body>
 	<script type="text/javascript">
-			/*	  $( function() { //datepicker mostrado
-    $( "#datepicker" ).datepicker();
-  } );*/
+		
 		$(function(){
-			$("#datepicker").datepicker({ //datepicker de texto
+			$(".datepicker").datepicker({ //datepicker de texto
 				dateFormat: "yy-mm-dd",
 				closeText: 'Cerrar',
         		prevText: '<Ant',
@@ -58,13 +56,40 @@
 			</div>
 			<div class="form-group">
 				<label>Fecha del Mantenimiento</label>
-				<!--input type="text" class="datepicker form-control" data-provide="datepicker"-->
-				<div id="datepicker"></div>
+				<input type="text" class="datepicker form-control" name="date" data-provide="datepicker">
 			</div>
 
+			<input type="hidden" name="car" value="<?php echo $_GET['v'];?>">
+
+			<div class="form-group">
+				<label>horas dedicadas</label>
+				<input type="number" class="form-control" name="horas">
+			</div>
+			
+			<label>Observaciones</label>
+			<textarea class="form-control" name="obs">
+				
+			</textarea>
+			<div class="form-group">
+				<label>Mantenimiento efectuado</label>
+				<div class="row">
+					<div class="col-md-10">
+						<?php sel_man(); ?>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-info float-right" id="add">+</button>
+					</div>
+				</div>
+
+			</div>
+			<ul class="list-group" id="mantenimientos">
+
+			</ul>
+			<button id="submit" class="btn btn-primary" type="submit">Enviar</button>
 		</form>
 	</div>
-
+	
 	<script src="js/jquery-ui.js" type="text/javascript"></script>
+	<script src="js/cars.js" type="text/javascript">	</script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 
 function conectar(){
-	$connect = new mysqli("localhost","root","","mantenimiento");
-    //$connect = new mysqli("localhost","root","root","mantenimiento");
+	//$connect = new mysqli("localhost","root","","mantenimiento");
+    $connect = new mysqli("localhost","root","root","mantenimiento");
 	if($connect->connect_errno){
        //printf("<h1><span>LA CONEXIÓN CON LA BASE DE DATOS HA FALLADO: %s\n".$connect->connect_error."</span></h1>");
        exit();
@@ -48,6 +48,34 @@ function ins_vehiculo($matricula,$cliente,$marca,$modelo,$bastidor){
 
 }
 
+function ins_hist($km,$fecha,$horas,$car,$obs,$mant){
+    
+    $sqlins = "INSERT INTO `historial`(`km`, `fecha`, `fk_vehiculo`, `observaciones`, `horas`) VALUES ('".$km."','".$fecha."','".$car."','".$obs."','".$horas."')";
+    $mysqli = conectar();
+    if ($resultado = $mysqli->query($sqlins)) {//todo fue bien
+        $lastid = $mysqli->insert_id;
+
+        //Hacer bucle for que recorra el array $mant y por tantas variables dentro del array se harán tantas inserciones en la tabla histman
+        echo "<pre>";
+        print_r($mant);
+        echo "</pre>";
+        foreach ($mant as $key => $value) {
+        $sqldos = "INSERT INTO `hist_man`(`fk_historial`, `fk_mantenimento`) VALUES ('".$lastid."','".$value."')";
+        $mysqli->query($sqldos);    
+        }
+        $mysqli->close();
+        return true;
+    } else {//devolver error catastrofico
+        echo $sqlins;
+        echo "y todo se fue a la puta";
+        $mysqli->close();
+        return false;
+    }
+    
+
+}
+
+
 //getters
 function get_clientes(){
     $sql = "SELECT * FROM `cliente`";
@@ -68,6 +96,19 @@ function get_vehiculos(){
 
 function get_vehiculo($v){
     $sql = "SELECT id_vehiculo, matricula, bastidor, modelo, marca, c.name, c.dni, c.telefono, c.tipo FROM vehiculo as v JOIN cliente  c ON v.fk_cliente = c.id_cliente WHERE id_vehiculo = ".$v;
+}
+
+function get_mant(){
+    $sql = "SELECT * FROM `mantenimiento`";
+    return select($sql);
+}
+
+function get_hist($car){
+ $sql = "select h.*, m.* From historial h 
+left join hist_man hm on hm.fk_historial = h.id_historial
+left join mantenimiento m on m.id_mantenimiento = hm.fk_mantenimento
+where h.fk_vehiculo = ".$car;
+    return select($sql); 
 }
 
 function select($sql){

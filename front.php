@@ -133,4 +133,27 @@ include_once "MySQLDataSource.php";
 <?php
 		}
 		}
+
+		function sel_man(){
+			$list = get_mant();
+			if ($list->num_rows > 0){
+				$i=1;
+?>
+				<select class="form-control" id="mant">
+<?php
+					while($row = $list->fetch_assoc()){
+						if (!$row['tipo']) {
+							$row['tipo']='Mecánico';
+						}else{
+							$row['tipo']='Limpieza';
+						}
+						echo '<option value="'.$row['id_mantenimiento'].'">'.$row['nombre'].' - '.$row['tipo'].'</option>';
+						$i++;
+					}
+?>
+					</select>
+<?
+			}
+
+		}
 ?>	
