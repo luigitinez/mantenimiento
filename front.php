@@ -1,6 +1,5 @@
 <?php
 include_once "MySQLDataSource.php";
-
 	function geturl($navdir=""){	
 		if($navdir=="")
 		$dir=$_SERVER['PHP_SELF'];
@@ -11,11 +10,9 @@ include_once "MySQLDataSource.php";
 		$web=substr($dir, $pos);
 		return $web;
 	}
-
 	function get_car($v){
 		$list =get_vehiculo($v);
 	}
-
 	function menu(){
 		$pages = array("index.php"=>"Inicio");
  		$activePage = geturl();
@@ -27,7 +24,7 @@ include_once "MySQLDataSource.php";
     	$pages["pres.php"]			= "Presentación";*/
 ?>    	
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		 
+
  		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -42,7 +39,6 @@ include_once "MySQLDataSource.php";
 		        </a>
 		    </li>
 		<?php endforeach;
-
 ?>		      
 		    </ul>
 		  </div>
@@ -52,7 +48,6 @@ include_once "MySQLDataSource.php";
 	}
 //table bodies 
 	function tbody_clientes(){
-
 		$list = get_clientes();
 		if ($list->num_rows > 0) {
 			$i=1;
@@ -72,11 +67,8 @@ include_once "MySQLDataSource.php";
 		    	$i++;
 			}
 		}
-
 	}
-
 		function tbody_mantenimiento(){
-
 			$list = get_mantenimientos();
 			if ($list->num_rows > 0) {
 				$i=1;
@@ -85,7 +77,6 @@ include_once "MySQLDataSource.php";
 			    	echo '<tr>';
 			    	echo '<th scope="row">'.$i.'</th>';
 			    	echo '<td>'.$row['nombre'].'</td>';
-
 			    	if ($row['tipo']==0) {
 			    		echo '<td>Mecanica</td>';
 			    	}else{
@@ -97,7 +88,6 @@ include_once "MySQLDataSource.php";
 			}
         		
 		}
-
 		function tbody_vehiculos(){
 			$list = get_vehiculos();
 			if ($list->num_rows > 0 ){
@@ -114,7 +104,6 @@ include_once "MySQLDataSource.php";
 				}
 			}
 		}
-
 		function sel_clientes(){
 			$list = get_clientes();
 			if ($list->num_rows > 0) {
@@ -124,7 +113,6 @@ include_once "MySQLDataSource.php";
 <?php
 			while($row = $list->fetch_assoc()) {
 			/*recorremos todas las lineas de la consulta para mostrarlas*/
-
 		    	echo '<option value="'.$row['id_cliente'].'">'.$row['name'].' - '.$row['dni'].'</option>';
 		    	$i++;
 			}
@@ -133,6 +121,7 @@ include_once "MySQLDataSource.php";
 <?php
 		}
 		}
+
 
 		function sel_man(){
 			$list = get_mant();
@@ -152,8 +141,7 @@ include_once "MySQLDataSource.php";
 					}
 ?>
 					</select>
-<?
+<?php
 			}
-
 		}
-?>	
+?>
