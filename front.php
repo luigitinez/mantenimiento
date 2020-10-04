@@ -11,7 +11,7 @@ include_once "MySQLDataSource.php";
 		return $web;
 	}
 	function get_car($v){
-		$list =get_vehiculo($v);
+		$list =get_vehiculo($v);		
 	}
 	function menu(){
 		$pages = array("index.php"=>"Inicio");
@@ -68,26 +68,26 @@ include_once "MySQLDataSource.php";
 			}
 		}
 	}
-		function tbody_mantenimiento(){
-			$list = get_mantenimientos();
-			if ($list->num_rows > 0) {
-				$i=1;
-				while($row = $list->fetch_assoc()) {
+	function tbody_mantenimiento(){
+		$list = get_mantenimientos();
+		if ($list->num_rows > 0) {
+			$i=1;
+			while($row = $list->fetch_assoc()) {
 				/*recorremos todas las lineas de la consulta para mostrarlas*/
-			    	echo '<tr>';
-			    	echo '<th scope="row">'.$i.'</th>';
-			    	echo '<td>'.$row['nombre'].'</td>';
-			    	if ($row['tipo']==0) {
-			    		echo '<td>Mecanica</td>';
-			    	}else{
-			    		echo '<td>Limpieza</td>';	            		
-			    	}
-			    	echo '</tr>';
-			    	$i++;
-				}
+			    echo '<tr>';
+			    echo '<th scope="row">'.$i.'</th>';
+			    echo '<td>'.$row['nombre'].'</td>';
+			    if ($row['tipo']==0) {
+			    	echo '<td>Mecanica</td>';
+			    }else{
+			    	echo '<td>Limpieza</td>';	            		
+			    }
+			    echo '</tr>';
+			    $i++;
 			}
-        		
 		}
+        		
+	}
 		function tbody_vehiculos(){
 			$list = get_vehiculos();
 			if ($list->num_rows > 0 ){
@@ -143,5 +143,33 @@ include_once "MySQLDataSource.php";
 					</select>
 <?php
 			}
+		}
+
+		function sel_hist($car){
+			$list = get_hist($car);
+			if ($list->num_rows > 0){
+				$i=1;
+	
+					while($row = $list->fetch_assoc()){
+						
+						if (!$row['tipo']) {
+							$color='table-primary';
+						}else{
+							$color='table-warning';
+						}
+						
+						echo '<tr class="'.$color.'">
+						<td>'.$row['nombre'].'</td> 
+						<td>'.$row['fecha'].'</td>
+						<td>'.$row['km'].'</td>
+						<td>'.$row['horas'].'</td>
+						<td>'.$row['nombre'].'</td>
+						<td>'.$row['observaciones'].'</td>
+						</tr>';
+						$i++;
+					}
+
+			}
+
 		}
 ?>

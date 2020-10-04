@@ -1,11 +1,39 @@
 	//evitamos que se haga submit del formulario cuando se pulsa enviar o se hace enter
 	$("form").submit(function(e){
-        // e.preventDefault();
-        if(!$("#mantenimientos").children().length > 0 ){
-        	alert("Debe seleccionar como mínimo un mantenimiento");
-	    	return false;
-	    }
-    });
+		//e.preventDefault();
+		var error = false;
+		var msg_error="";
+		if(!$("#mantenimientos").children().length > 0 ){
+        	msg_error   = "Debe seleccionar como mínimo un mantenimiento.\n";
+			error 		= true;
+
+		}
+		if($("#km").val().length === 0){
+			msg_error	+= "Debe introducir el kilometraje del vehículo cuando se realizó en mantenimiento\n";
+			error		= true;
+			$("#km").css("border-color","red");
+		} 
+		if($("#date").val().length === 0){
+			msg_error	+= "Seleccione la fecha del mantenimiento\n";
+			error		= true;
+			$("#date").css("border-color","red");
+		} 
+		if($("#horas").val().length === 0){
+			msg_error	+= "Introduzca las horas dedicadas al mantenimiento";
+			error		= true;
+			$("#horas").css("border-color","red");
+		} 
+		if(error){
+			e.preventDefault();
+			alert(msg_error);
+		}
+	});
+	
+	$(".errControl").blur(function(){
+		if($(this).length>0){
+			$(this).css("border-color","");
+		}
+	})
 
 	    	var confirmIt = function (e) {
 	    	    if (!confirm('¿Está seguro de que desea borrar el registro?')) e.preventDefault();

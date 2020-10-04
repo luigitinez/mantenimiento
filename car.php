@@ -41,33 +41,35 @@
 <?php
 	menu();
 	if ($_GET) {
-		get_car($_GET['v']);
+		$coche = get_vehiculo($_GET['v']);
+	
+		
 	}else{
 		die("<h1>Página no encontrada</h1>");
 	}
-
+	
 ?>
 	<div class="container">
-		<h1></h1>
+		<h1><?= $coche['marca']. ' - '. $coche['modelo']. ' de ' . $coche['propietario']?> </h1>
 		<form method="post" action="car-post.php">
 			<div class="form-group">
 				<label>Kilometros</label>
-				<input type="text" class="form-control" name="km">
+				<input type="text" class="form-control errControl" name="km" id="km">
 			</div>
 			<div class="form-group">
 				<label>Fecha del Mantenimiento</label>
-				<input type="text" class="datepicker form-control" name="date" data-provide="datepicker">
+				<input type="text" class="datepicker form-control errControl" name="date" data-provide="datepicker" id="date">
 			</div>
 
-			<input type="hidden" name="car" value="<?php echo $_GET['v'];?>">
+			<input id="car" type="hidden" name="car" value="<?php echo $_GET['v'];?>">
 
 			<div class="form-group">
 				<label>horas dedicadas</label>
-				<input type="number" class="form-control" name="horas">
+				<input type="number" class="form-control errControl" id="horas" name="horas">
 			</div>
 			
 			<label>Observaciones</label>
-			<textarea class="form-control" name="obs">
+			<textarea class="form-control" name="obs" id="obs">
 				
 			</textarea>
 			<div class="form-group">
@@ -88,7 +90,21 @@
 			<button id="submit" class="btn btn-primary" type="submit">Enviar</button>
 		</form>
 	</div>
-	
+	<div class="bottom container">
+		<table class="table">
+			<thead>
+				<th scope="col">Mantenimiento</th>
+				<th scope="col">Fecha</th>
+				<th scope="col">Kilometros</th>
+				<th scope="col">Horas</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Observaciones</th>
+			</thead>
+			<tbody>
+				<?php sel_hist($_GET['v']); ?>
+			</tbody>
+		</table>
+	</div>
 	<script src="js/jquery-ui.js" type="text/javascript"></script>
 	<script src="js/cars.js" type="text/javascript">	</script>
 </body>
