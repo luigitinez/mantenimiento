@@ -57,9 +57,7 @@ function ins_hist($km,$fecha,$horas,$car,$obs,$mant){ //inserta un mantenimiento
         $lastid = $mysqli->insert_id;
 
         //Hacer bucle for que recorra el array $mant y por tantas variables dentro del array se harán tantas inserciones en la tabla histman
-        echo "<pre>";
-        print_r($mant);
-        echo "</pre>";
+
         foreach ($mant as $key => $value) {
         $sqldos = "INSERT INTO `hist_man`(`fk_historial`, `fk_mantenimento`) VALUES ('".$lastid."','".$value."')";
         $mysqli->query($sqldos);    

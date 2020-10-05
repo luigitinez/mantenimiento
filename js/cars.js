@@ -4,17 +4,17 @@
 		var error = false;
 		var msg_error="";
 		if(!$("#mantenimientos").children().length > 0 ){
-        	msg_error   = "Debe seleccionar como mínimo un mantenimiento.\n";
+        	msg_error   = "Debe seleccionar como mínimo un mantenimiento.\n\r";
 			error 		= true;
 
 		}
 		if($("#km").val().length === 0){
-			msg_error	+= "Debe introducir el kilometraje del vehículo cuando se realizó en mantenimiento\n";
+			msg_error	+= "Debe introducir el kilometraje del vehículo cuando se realizó en mantenimiento\n\r";
 			error		= true;
 			$("#km").css("border-color","red");
 		} 
 		if($("#date").val().length === 0){
-			msg_error	+= "Seleccione la fecha del mantenimiento\n";
+			msg_error	+= "Seleccione la fecha del mantenimiento\n\r";
 			error		= true;
 			$("#date").css("border-color","red");
 		} 
@@ -23,9 +23,31 @@
 			error		= true;
 			$("#horas").css("border-color","red");
 		} 
-		if(error){
-			e.preventDefault();
-			alert(msg_error);
+		e.preventDefault();
+		if(error){	
+			Swal.fire({
+				icon: 'error',
+				title: 'Error al enviar',
+				text: msg_error
+				
+			  });
+		}else{
+			var form = $(this);
+			var url = form.attr('action');
+    
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: form.serialize(), // serializes the form's elements.
+				success: function(data)
+				{
+					Swal.fire({
+						icon:'success',
+						title:'Exito en el envio',
+						text:data
+					}); // show response from the php script.
+				}
+			});
 		}
 	});
 	
@@ -35,11 +57,11 @@
 		}
 	})
 
-	    	var confirmIt = function (e) {
-	    	    if (!confirm('¿Está seguro de que desea borrar el registro?')) e.preventDefault();
+	    var confirmIt = function (e) {
+	    	if (!confirm('¿Está seguro de que desea borrar el registro?')) e.preventDefault();
 	    	    //elimina el li padre
-	    	    $(this).parents('li').remove();
-	    	};
+	    	$(this).parents('li').remove();
+	    };
 		var i = 1;
 		$( "#add" ).click(function() {
 			//coge el value del select
@@ -87,3 +109,17 @@
   				alert("Usted ya ha introducido '" + man_text+ "' no puede introducir dos veces el mismo mantenimiento!");
   			}
 		});
+
+		function refreshTable(){
+
+			$('#mbody').empty();
+			$.ajax({
+				type: "POST",
+				url: "caller.php?f=sel_hist",
+				
+				success: function(data)
+				{
+					$('#mbody').append(data);
+				}
+			});
+		}

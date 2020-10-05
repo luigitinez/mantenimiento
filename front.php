@@ -13,6 +13,20 @@ include_once "MySQLDataSource.php";
 	function get_car($v){
 		$list =get_vehiculo($v);		
 	}
+	function head($titleName="Mantenimientos"){
+?>
+		<head>		
+			<meta charset="utf-8">
+			<title><?=$titleName?></title>
+			<link rel="stylesheet" href="css/bootstrap.css" >
+			<link rel="stylesheet" href="css/style.css">
+			<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+			<link rel="stylesheet" type="text/css" href="sweetalert/sweetalert2.css">
+			<script src="sweetalert/sweetalert2.min.js"></script>
+			<script src="js/jquery.js" type="text/javascript"></script>
+		</head>
+<?php
+	}
 	function menu(){
 		$pages = array("index.php"=>"Inicio");
  		$activePage = geturl();

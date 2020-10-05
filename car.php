@@ -3,15 +3,7 @@
 	include "front.php";
 ?>
 <html>
-<head>
-		<meta charset="utf-8">
-		<title>Informe Coche</title>
-		<link rel="stylesheet" href="css/bootstrap.css" >
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
-		<script src="js/jquery.js" type="text/javascript"></script>
-
-</head>
+<?= head("Vehiculo");?>
 <body>
 	<script type="text/javascript">
 		
@@ -100,7 +92,7 @@
 				<th scope="col">Nombre</th>
 				<th scope="col">Observaciones</th>
 			</thead>
-			<tbody>
+			<tbody id="mbody">
 				<?php sel_hist($_GET['v']); ?>
 			</tbody>
 		</table>

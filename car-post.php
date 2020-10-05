@@ -17,8 +17,8 @@ if (isset($_POST)) {
 
 	
 }else{
-	echo("Se fue todo a la puta!");
+	echo("Hubo un error al Actualizar");
 }
-echo '<a href="car.php"'.$_POST['car'].'>Volver atras</a>';
+
 
 ?>

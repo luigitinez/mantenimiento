@@ -2,15 +2,10 @@
 <?php
 setlocale(LC_ALL,"es_ES");
 
-include_once "front.php"
+include_once "front.php";
+head("Clientes");
 ?>
-	<head>
-		<meta charset="utf-8">
-		<title>Clientes</title>
-		<link rel="stylesheet" href="css/bootstrap.css" >
-		<link rel="stylesheet" href="css/style.css">
 
-	</head>
 
 	<body>
 <?php 
