@@ -24,6 +24,7 @@ include_once "MySQLDataSource.php";
 			<link rel="stylesheet" type="text/css" href="sweetalert/sweetalert2.css">
 			<script src="sweetalert/sweetalert2.min.js"></script>
 			<script src="js/jquery.js" type="text/javascript"></script>
+			<script src="js/bootstrap.js" ></script>
 		</head>
 <?php
 	}
@@ -36,12 +37,12 @@ include_once "MySQLDataSource.php";
     	$pages['mantenimiento.php']	= "Mantenimientos";
     	/*$pages["contact.php"]		= "Contactenos";
     	$pages["pres.php"]			= "Presentación";*/
-?>    	
+?>    		
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
+		
  		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
-		  </button>
+		  </button>		  
 		  <div class="collapse navbar-collapse" id="navbarNav">
 		    <ul class="navbar-nav">
 <?php
