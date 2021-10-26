@@ -1,8 +1,8 @@
 <?php
 
 function conectar(){
-    $connect = new mysqli("localhost","root","","mantenimiento");
-    //$connect = new mysqli("localhost","root","root","mantenimiento");
+    //$connect = new mysqli("localhost","root","","mantenimiento");
+    $connect = new mysqli("localhost","root","root","mantenimiento");
 	if($connect->connect_errno){
        //printf("<h1><span>LA CONEXIÓN CON LA BASE DE DATOS HA FALLADO: %s\n".$connect->connect_error."</span></h1>");
        exit("Error al conectar con la base de datos");
